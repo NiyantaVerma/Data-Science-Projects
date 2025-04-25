@@ -1,13 +1,13 @@
 import os
 from langchain.agents import initialize_agent, Tool
-from langchain.llms import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.utilities import DuckDuckGoSearchAPIWrapper
 from dotenv import load_dotenv
 
 load_dotenv()
 
 search = DuckDuckGoSearchAPIWrapper()
-llm = OpenAI(openai_api_key=os.getenv("OPEN_AI_API_KEY"))
+llm = ChatOpenAI(model="gpt-4o-mini",openai_api_key=os.getenv("OPEN_AI_API_KEY"))
 
 tools = [
     Tool(
